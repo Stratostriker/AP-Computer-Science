@@ -216,6 +216,95 @@ public class Picture extends SimplePicture
       }
     }
   }
+
+  public void keepOnlyBlue()
+  {
+   Pixel[][] pixels = this.getPixels2D();
+   for (Pixel[] rowArray : pixels)
+   {
+       for (Pixel pixelObj : rowArray)
+       {
+           pixelObj.setRed(0);
+           pixelObj.setGreen(0);
+       }
+   }
+  }
+
+  public void mirrorVerticalRightToLeft()
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel leftPixel = null;
+		Pixel rightPixel = null;
+		int width = pixels[0].length;
+		for (int row = 0; row < pixels.length; row++)
+		{
+			for (int col = 0; col < width / 2; col++)
+			{
+				leftPixel = pixels[row][col];
+				rightPixel = pixels[row][width - 1 - col];
+				leftPixel.setColor(rightPixel.getColor());
+			}
+		}
+	}
+
+  public void mirrorHorizontal()
+	{
+		Pixel[][] pixels = this.getPixels2D();
+		Pixel topPixel = null;
+		Pixel botPixel = null;
+		int height = pixels.length;
+		for (int row = 0; row < height / 2; row++)
+		{
+			for (int col = 0; col < pixels[0].length; col++)
+			{
+				topPixel = pixels[row][col];
+				botPixel = pixels[height - row - 1][col];
+				botPixel.setColor(topPixel.getColor());
+			}
+		}
+	}
+  
+  public void mirrorArms() 
+  {
+	  Pixel fromPixel = null;
+	  Pixel toPixel = null;
+	  Pixel[][] pixels = this.getPixels2D();
+
+	  for (int row = 155; row < 191; row++) {
+		  for (int col = 98; col < 169; col++) {
+		    fromPixel = pixels[row][col];
+  		  toPixel = pixels[191 - row + 191][col];  			      
+        toPixel.setColor(fromPixel.getColor());
+  	  }
+  	}
+    for (int row = 155; row < 191; row++) 
+    {
+  	  for (int col = 238; col < 296; col++) {
+  		  fromPixel = pixels[row][col];
+  		  toPixel = pixels[191 - row + 191][col];
+  		  toPixel.setColor(fromPixel.getColor());		  
+      }
+	  }
+  }
+  
+  public void mirrorGull() 
+    {
+  	Pixel fromPixel = null;
+  	Pixel toPixel = null;
+  	Pixel[][] pixels = this.getPixels2D();
+
+  	for (int row = 225; row < 332; row++) 
+    {
+  		for (int col = 219; col < 350; col++) 
+      {
+  			fromPixel = pixels[row][col];
+  			toPixel = pixels[row][350 - col + 350];
+  			toPixel.setColor(fromPixel.getColor());
+  		}
+  	}
+  }
+
+
   
   
   /* Main method for testing - each class in Java can have a main 
