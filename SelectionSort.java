@@ -4,7 +4,7 @@ public class SelectionSort {
             int minIndex = i;
             // find minimum element and its index
             for (int j = i+1; j < array.length; j++) {
-                if (array[j] < minIndex) {
+                if (array[j] < array[minIndex]) {
                     minIndex = j;
                 }
             }
@@ -18,7 +18,7 @@ public class SelectionSort {
   public static void selectionSort(String[] array) {
     for (int i = 0; i < array.length-1; i++) {
             int minIndex = i;
-            String min = arr[i];
+            String min = array[i];
             // find minimum element and its index
             for (int j = i+1; j < array.length; j++) {
                 if (array[j].compareToIgnoreCase(min) < 0) {
